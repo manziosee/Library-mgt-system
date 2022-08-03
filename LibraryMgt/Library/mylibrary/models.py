@@ -16,7 +16,7 @@ class Books(models.Model):
         ('fiction', 'Fiction'),
         ('fantasy', 'Fantasy'),
         ('science', 'Science'),
-        ('novel', 'Novel'),
+        ('novel', 'Novel')
     ]
 
     booktitle = models.CharField(max_length=50, null=True,blank=False)
