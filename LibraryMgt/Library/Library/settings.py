@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'mylibrary',
 ]
 
-AUTH_USER_MODEL = 'accounts.Library_user'
+AUTH_USER_MODEL = 'accounts.MyUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'Library.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Library',
+        'NAME': 'library',
         'USER': 'postgres',
         'PASSWORD': 'post',
         'HOST' : 'localhost',
