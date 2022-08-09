@@ -2,10 +2,13 @@ from django.shortcuts import render
 from .serializers import BookSerializer, IssueSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Books
+from .models import Books, Issuebook
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 # Create your views here.
 
 class LibraryEndpoint(APIView):
+    permission_classes = [IsAuthenticated, IsAdminUser]
     def post(self, request):
         serializer = BookSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -37,11 +40,19 @@ class LibraryEndpoint(APIView):
         query.delete()
         return Response('Book deleted successfully')
 
-class BorrowEndpoint(APIView):
-    def post(self, request):
-        serializer = IssueSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
-    
+# class BorrowEndpoint(APIView):
+#     def post(self, request):
+#         serializer = IssueSerializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         return Response(serializer.data)
+
+class create(generics.ListCreateAPIView):
+    queryset = Issuebook.objects.all()
+    serializer_class = IssueSerializer
+class update(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Issuebook.objects.all()
+    serializer_class = IssueSerializer
+
+
 

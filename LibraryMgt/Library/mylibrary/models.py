@@ -36,6 +36,7 @@ class Issuebook(models.Model):
     borrowed_by = models.ForeignKey(User, max_length=30, on_delete=models.CASCADE)
     date_borrowed = models.DateField(auto_now = True)
     return_date = models.DateField(default = get_expiry)
-    def __str__(self) -> str:
-        return self.date_borrowed
+    
+    # def __str__(self):
+    #     return self.date_borrowed
     

@@ -31,7 +31,7 @@ class MyUser(AbstractBaseUser):
 
 
     email = models.CharField(unique=True, max_length=30)
-    username = models.CharField(unique=True, max_length=30)
+    #username = models.CharField(unique=True, max_length=30)
     usertype = models.CharField(choices=USER_TYPE, max_length=20, default='Librarian')
     gender = models.CharField(choices= GENDER,max_length=10)
     REQUIRED_FIELDS = ['gender']
