@@ -24,5 +24,4 @@ urlpatterns = [
     path('auth/', include('djoser.urls.jwt')),
 
     
-
 ]
